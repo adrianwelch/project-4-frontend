@@ -1,0 +1,9 @@
+<ul class="row">
+  <li ng-repeat="trip in tripsIndex.all" class="col-md-6">
+    <div class="trip">
+      <h2>{{ trip.title }}<h2>
+      <p>Created by: <strong>{{ trip.user.username }}</strong></p>
+      <button ui-sref="tripsShow({id: trip.id})">View</button>
+    </div>
+  </li>
+</ul>
