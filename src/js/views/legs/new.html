@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-6">
+    <form ng-submit="legsNew.create()">
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" ng-model="legsNew.leg.date">
+
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" ng-model="legsNew.leg.location" geometry="legsNew.leg.lat legsNew.leg.lng">
+
+      <label for="image">Image</label>
+      <input type="text" id="image" name="image" ng-model="legsNew.leg.image">
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" ng-model="legsNew.leg.description">
+
+      <button>Create</button>
+    </form>
+  </div>
+</div>

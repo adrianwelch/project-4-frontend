@@ -1,14 +1,36 @@
-
 <div class="row">
   <div class="col-md-6">
     <div class="trip">
       <h2>{{ tripsShow.trip.title }}<h2>
       <p>Created by: <strong>{{ tripsShow.trip.user.username }}</strong></p>
 
-      <button ui-sref="tripsEdit({id: tripsShow.trip.id})" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Edit</button>
-      <button ng-click="tripsShow.delete()" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Delete</button>
+      <button ng-click="tripsShow.toggleAttending()" ng-if="!tripsShow.isAttending()"     >Attend</button>
+
+       <!-- && main.isAuthenticated()" -->
+      <button ng-click="tripsShow.toggleAttending()" ng-if="tripsShow.isAttending()">Reject</button>
+
+       <!-- && main.isAuthenticated() -->
+
+      <button ui-sref="tripsEdit({id: tripsShow.trip.id})" ng-if="main.isAuthenticated()       ">Edit</button>
+      <button ng-click="tripsShow.delete()" ng-if="main.isAuthenticated()        ">Delete</button>
+
+      <button ui-sref="legsNew"        >Add Leg to Trip</button>
+      <!-- ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id" -->
+
+
+      <!-- && main.currentUser.id === tripsShow.trip.user.id -->
+
+      <!-- && main.currentUser.id === tripsShow.trip.user.id -->
     </div>
   </div>
+  <div class="col-md-6">
+  <div class="joiners">
+    <h5>Trip Joined by</h5>
+    <ul>
+      <li ng-repeat="joiner in tripsShow.trip.joiners">{{ joiner.username }}</li>
+    </ul>
+  </div>
+</div>
 </div>
 
 <div class="comments">
@@ -17,6 +39,7 @@
       <h2>Comments</h2>
       <ul>
         <li ng-repeat="comment in tripsShow.trip.comments">{{ comment.body }} - <strong>{{ comment.user.username }}</strong><button ng-click="tripsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
+        <!--  -->
       </ul>
     </div>
     <div class="col-md-6" ng-if="main.isAuthenticated()">
@@ -25,6 +48,44 @@
         <textarea type="text" name="body" ng-model="tripsShow.comment.body"></textarea>
         <button>Create</button>
       </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Add a Leg</h2>
+    <form ng-submit="tripsShow.create()">
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" ng-model="tripsShow.leg.date">
+
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" ng-model="tripsShow.leg.location" geometry="tripsShow.leg.lat tripsShow.leg.lng">
+
+      <label for="image">Image</label>
+      <input type="text" id="image" name="image" ng-model="tripsShow.leg.image">
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" ng-model="tripsShow.leg.description">
+
+      <button>Create</button>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="trip">
+        <h3>{{ tripsShow.leg.date }}</h3>
+        <h3>{{ tripsShow.leg.location }}</h3>
+        <h3>{{ tripsShow.leg.image }}</h3>
+        <h3>{{ tripsShow.leg.description }}</h3>
+      </div>
+
+      <div ng-repeat="trips in tripsShow.trip.legs" class="col-md-4 dates-content">
+        <a ui-sref="tripsShow({ id: trip.id })"><h3>{{ trips.location }}</h3></a>
+        <h3>{{trips.description}}</h3>
+        <h3>{{trips.date}}</h3>
+      </div>
     </div>
   </div>
 </div>

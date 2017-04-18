@@ -1,0 +1,49 @@
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="leg">
+      <h2>{{ legsShow.leg.location }}<h2> <h2>{{ legsShow.leg.date }}<h2>
+      <p>Created by: <strong>{{ legsShow.leg.user.username }}</strong></p>
+
+      <button ng-click="legsShow.toggleAttending()" ng-if="!legsShow.isAttending()"     >Attend</button>
+
+       <!-- && main.isAuthenticated()" -->
+      <button ng-click="legsShow.toggleAttending()" ng-if="legsShow.isAttending()">Reject</button>
+
+       <!-- && main.isAuthenticated() -->
+
+      <button ui-sref="legsEdit({id: legsShow.leg.id})" ng-if="main.isAuthenticated()       ">Edit</button>
+      <button ng-click="legsShow.delete()" ng-if="main.isAuthenticated()        ">Delete</button>
+      <!-- && main.currentUser.id === legsShow.leg.user.id -->
+
+      <!-- && main.currentUser.id === legsShow.leg.user.id -->
+    </div>
+  </div>
+  <div class="col-md-6">
+  <!-- <div class="joiners">
+    <h5>Leg Joined by</h5>
+    <ul>
+      <li ng-repeat="joiner in legsShow.leg.joiners">{{ joiner.username }}</li>
+    </ul>
+  </div> -->
+</div>
+</div>
+
+<div class="comments">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Comments</h2>
+      <ul>
+        <li ng-repeat="comment in legsShow.leg.comments">{{ comment.body }} - <strong>{{ comment.user.username }}</strong><button ng-click="legsShow.deleteComment(comment)" ng-if="main.isAuthenticated()        ">Delete</button></li>
+        <!-- && main.currentUser.id === comment.user.id -->
+      </ul>
+    </div>
+    <div class="col-md-6" ng-if="main.isAuthenticated()">
+      <h2>Add Comment</h2>
+      <form ng-submit="legsShow.addComment()">
+        <textarea type="text" name="body" ng-model="legsShow.comment.body"></textarea>
+        <button>Create</button>
+      </form>
+    </div>
+  </div>
+</div>

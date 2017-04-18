@@ -28,12 +28,27 @@ function TripsNewCtrl(Trip, User, $state) {
   vm.create = tripsCreate;
 }
 
-TripsShowCtrl.$inject = ['Trip', 'User', 'Comment', '$stateParams', '$state', '$auth'];
-function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth) {
+
+TripsShowCtrl.$inject = ['Trip', 'User', 'Comment', '$stateParams', '$state', '$auth', 'Leg'];
+function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg) {
   const vm = this;
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.trip = Trip.get($stateParams);
+
+  function legsCreate() {
+    vm.leg.trip_id = vm.trip.id
+    Leg
+      .save({ leg: vm.leg })
+      .$promise
+      .then((leg) => {
+        vm.trip.legs.push(leg);
+        vm.leg = {};
+        $state.go('tripsShow')
+      });
+  }
+
+  vm.create = legsCreate;
 
   function tripsDelete() {
     vm.trip
@@ -75,13 +90,13 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth) {
   vm.deleteComment = deleteComment;
 
   function toggleAttending() {
-    const index = vm.trip.attendee_ids.indexOf(vm.currentUser.id);
+    const index = vm.trip.joiner_ids.indexOf(vm.currentUser.id);
     if (index > -1) {
-      vm.trip.attendee_ids.splice(index, 1);
-      vm.trip.attendees.splice(index, 1);
+      vm.trip.joiner_ids.splice(index, 1);
+      vm.trip.joiners.splice(index, 1);
     } else {
-      vm.trip.attendee_ids.push(vm.currentUser.id);
-      vm.trip.attendees.push(vm.currentUser);
+      vm.trip.joiner_ids.push(vm.currentUser.id);
+      vm.trip.joiners.push(vm.currentUser);
     }
     tripsUpdate();
   }
@@ -89,7 +104,7 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth) {
   vm.toggleAttending = toggleAttending;
 
   function isAttending() {
-    return $auth.getPayload() &&  vm.trip.$resolved && vm.trip.attendee_ids.includes(vm.currentUser.id);
+    return $auth.getPayload() &&  vm.trip.$resolved && vm.trip.joiner_ids.includes(vm.currentUser.id);
   }
   vm.isAttending = isAttending;
 }
