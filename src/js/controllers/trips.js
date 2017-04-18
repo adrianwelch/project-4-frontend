@@ -50,6 +50,19 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg) {
 
   vm.create = legsCreate;
 
+  function deleteLeg(leg) {
+    console.log(leg);
+    Leg
+    .delete({ id: leg.id })
+    .$promise
+    .then(() => {
+      const index = vm.trip.legs.indexOf(leg);
+      vm.trip.legs.splice(index, 1);
+    });
+  }
+
+  vm.deleteLeg = deleteLeg;
+
   function tripsDelete() {
     vm.trip
       .$remove()

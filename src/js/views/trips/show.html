@@ -14,9 +14,6 @@
       <button ui-sref="tripsEdit({id: tripsShow.trip.id})" ng-if="main.isAuthenticated()       ">Edit</button>
       <button ng-click="tripsShow.delete()" ng-if="main.isAuthenticated()        ">Delete</button>
 
-      <button ui-sref="legsNew"        >Add Leg to Trip</button>
-      <!-- ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id" -->
-
 
       <!-- && main.currentUser.id === tripsShow.trip.user.id -->
 
@@ -61,10 +58,13 @@
       <input type="date" id="date" name="date" ng-model="tripsShow.leg.date">
 
       <label for="location">Location</label>
-      <input type="text" id="location" name="location" ng-model="tripsShow.leg.location" geometry="tripsShow.leg.lat tripsShow.leg.lng">
+      <input type="text" autocomplete id="location" name="location" ng-model="tripsShow.leg.location"  geometry="tripsShow.leg.lat">
 
-      <label for="image">Image</label>
-      <input type="text" id="image" name="image" ng-model="tripsShow.leg.image">
+
+
+
+      <label for="base64">Image</label>
+      <input type="file" base 64 id="base64" name="base64" ng-model="tripsShow.leg.base64">
       <label for="description">Description</label>
       <input type="text" id="description" name="description" ng-model="tripsShow.leg.description">
 
@@ -72,20 +72,9 @@
     </form>
   </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div class="trip">
-        <h3>{{ tripsShow.leg.date }}</h3>
-        <h3>{{ tripsShow.leg.location }}</h3>
-        <h3>{{ tripsShow.leg.image }}</h3>
-        <h3>{{ tripsShow.leg.description }}</h3>
-      </div>
-
-      <div ng-repeat="trips in tripsShow.trip.legs" class="col-md-4 dates-content">
-        <a ui-sref="tripsShow({ id: trip.id })"><h3>{{ trips.location }}</h3></a>
-        <h3>{{trips.description}}</h3>
-        <h3>{{trips.date}}</h3>
-      </div>
-    </div>
+  <div ng-repeat="leg in tripsShow.trip.legs" class="col-md-4 dates-content">
+    <h3>Date: {{leg.date}} <br> Location: {{ leg.location }} <br> description: <br>{{leg.description}} <br> <img ng-src="{{ leg.image_src }}"></h3>
+    <button ng-click="tripsShow.deleteLeg(leg)" ng-if="main.isAuthenticated()">Delete</button>
+    <!-- && main.currentUser.id === leg.trip.user -->
   </div>
 </div>
