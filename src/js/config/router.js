@@ -66,6 +66,6 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/users/show.html',
       controller: 'UsersShowCtrl as usersShow'
     });
-    
+
     $urlRouterProvider.otherwise('/');
   }

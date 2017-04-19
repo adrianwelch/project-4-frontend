@@ -24,7 +24,7 @@ function googleMap($window) {
       let path = null;
 
       function removeMarkers() {
-        console.log('inside removeMarkers()');
+        // console.log('inside removeMarkers()');
         markers.forEach((marker) => {
           marker.setMap(null);
         });
@@ -42,12 +42,20 @@ function googleMap($window) {
           route.push(new $window.google.maps.LatLng(leg.lat, leg.lng));
         });
 
+        var lineSymbol = {
+          path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+        };
+
         path = new $window.google.maps.Polyline({
           path: route,
+          icons: [{
+            icon: lineSymbol,
+            offset: '100%'
+          }],
           geodesic: true,
-          strokeColor: '#FF0000',
+          strokeColor: '#939292',
           strokeOpacity: 1.0,
-          strokeWeight: 2
+          strokeWeight: 4
         });
         path.setMap(map);
       }
@@ -67,7 +75,7 @@ function googleMap($window) {
           animation: google.maps.Animation.DROP,
         });
         markers.push(marker);
-        console.log('marker', marker);
+        // console.log('marker', marker);
       }
 
       $scope.$watch('legs', (newVal) => {

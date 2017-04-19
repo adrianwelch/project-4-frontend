@@ -3,12 +3,16 @@
     <form ng-submit="legsEdit.update()">
       <label for="date">Date</label>
       <input type="date" id="date" name="date" ng-model="legsEdit.leg.date">
-      <label for="location">Title</label>
-      <input type="text" id="title" name="title" ng-model="legsEdit.leg.location">
-      <label for="image">Image</label>
-      <input type="text" id="image" name="image" ng-model="legsEdit.leg.image">
+
+      <label for="location">Location</label>
+      <input type="text" autocomplete id="location" name="location" ng-model="legsEdit.location"  lat="legsEdit.stop.lat" lng="legsEdit.stop.lng" place="legsEdit.stop.name">
+
+
+      <label for="base64">Image</label>
+      <input type="file" base64 id="base64" name="base64" ng-model="legsEdit.leg.base64">
       <label for="description">Description</label>
-      <input type="description" id="description" name="description" ng-model="legsEdit.leg.description">
+
+      <input type="text" id="description" name="description" ng-model="legsEdit.leg.description">
       <button>Update</button>
     </form>
   </div>

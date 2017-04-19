@@ -1,6 +1,81 @@
 // Import all of your scss files here
+@import 'variables';
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500');
+
+nav {
+        ul {
+          li {
+            a {
+              color: black;
+            }
+          }
+        }
+      }
 
 .google-map {
-  width: 500px;
+  width: 900px;
   height: 500px;
+}
+
+nav {
+    height: 60px;
+    ul {
+      li {
+        line-height: 60px;
+        display: inline-block;
+        &:first-child {
+          font-size: 24px;
+        }
+        &:not(:first-child) {
+          float: right;
+          margin-left: 20px;
+        }
+        a {
+          color: black;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          &:hover, &:focus {
+            color: grey;
+
+          &.active {
+            position: relative;
+            &:after {
+              content: "";
+              position: absolute;
+              bottom: -2px;
+              left: 0;
+              height: 2px;
+              width: 100%;
+              border-radius: 2px;
+              background-color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+button, input, textarea {
+  font-family: 'Quicksand', sans-serif;
+}
+
+a, a:hover, a:focus {
+  color: black;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 400;
+}
+
+h1, h2, h5 {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.createdBy {
+  font-size: 20px;
 }
