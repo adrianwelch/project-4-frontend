@@ -60,7 +60,12 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/register',
       templateUrl: 'js/views/auth/register.html',
       controller: 'AuthCtrl as auth'
+    })
+    .state('usersShow', {
+      url: '/users/:id',
+      templateUrl: 'js/views/users/show.html',
+      controller: 'UsersShowCtrl as usersShow'
     });
-
+    
     $urlRouterProvider.otherwise('/');
   }

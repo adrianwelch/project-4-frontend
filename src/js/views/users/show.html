@@ -1,6 +1,6 @@
     <h2>all of {{ usersShow.user.username }}'s trips</h2>
     <div class="row">
-      <div ng-repeat="trip in usersShow.userTrips" class="col-md-6 dates-content">
+      <div ng-repeat="trip in usersShow.userTrips">
         <a ui-sref="tripsShow({ id: trip.id })"><h3>{{ trip.title }}</h3></a>
       </div>
     </div>

@@ -38,6 +38,17 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg) {
 
   function legsCreate() {
     vm.leg.trip_id = vm.trip.id
+
+
+    vm.leg.location = vm.stop.name;
+    vm.leg.lat = vm.stop.lat;
+    vm.leg.lng = vm.stop.lng;
+
+    console.log('location', vm.stop.name);
+    console.log('lat', vm.stop.lat);
+    console.log('lng', vm.stop.lng);
+
+
     Leg
       .save({ leg: vm.leg })
       .$promise

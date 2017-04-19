@@ -7,10 +7,13 @@ function autocomplete($window) {
   return {
     restrict: 'A',
     require: 'ngModel',
+    replace: false,
     scope: {
-      geometry: '='
+      lat: '=',
+      lng: '=',
+      place: '='
     },
-    link: function(scope, element, attrs, model) {
+    link: function($scope, element, attrs, model) {
       const options = {
         types: []
         // componentRestrictions: {}
@@ -20,8 +23,12 @@ function autocomplete($window) {
 
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace();
-        scope.geometry = place.geometry.location.toJSON();
+        $scope.lat = place.geometry.location.toJSON().lat;
+        $scope.lng = place.geometry.location.toJSON().lng;
+        $scope.place = place.address_components[0].long_name;
         model.$setViewValue(element.val());
+        // scope.geometry = place.geometry.location.toJSON();
+        // model.$setViewValue(element.val());
       });
     }
   };

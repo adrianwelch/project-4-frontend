@@ -54,12 +54,6 @@
 
 
 
-
-
-
-
-
-
 <div class="row">
   <div class="col-md-6">
     <h2>Add a Leg</h2>
@@ -68,7 +62,7 @@
       <input type="date" id="date" name="date" ng-model="tripsShow.leg.date">
 
       <label for="location">Location</label>
-      <input type="text" autocomplete id="location" name="location" ng-model="tripsShow.leg.location"  geometry="tripsShow.leg.lat">
+      <input type="text" autocomplete id="location" name="location" ng-model="tripsShow.location"  lat="tripsShow.stop.lat" lng="tripsShow.stop.lng" place="tripsShow.stop.name">
 
 
 

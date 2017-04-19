@@ -1,25 +1,17 @@
 angular
   .module('project4')
-  .controller('UsersIndexCtrl', UsersIndexCtrl)
   .controller('UsersEditCtrl', UsersEditCtrl)
   .controller('UsersShowCtrl', UsersShowCtrl);
-
-UsersIndexCtrl.$inject = ['User'];
-function UsersIndexCtrl(User) {
-  const vm = this;
-
-  vm.all = User.query();
-}
 
 UsersShowCtrl.$inject = ['User', 'Trip', '$stateParams', '$state'];
 function UsersShowCtrl(User, Trip, $stateParams, $state) {
   const vm = this;
-  vm.userDates = [];
+  vm.userTrips = [];
 
   vm.user = User.get($stateParams, (user) => {
     vm.user = user;
-    vm.userDates = Trip.query({ createdBy: user.id });
-    console.log(vm.userDates);
+    vm.userTrips = Trip.query({ createdBy: user.id });
+    console.log(vm.userTrips);
   });
 
   function usersDelete() {

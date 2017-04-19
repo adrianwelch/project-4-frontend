@@ -10,21 +10,23 @@ function googleMap($window) {
    template: '<div class="google-map"></div>',
    scope: {
      center: '=',
-     locations: '=',
+     location: '=',
      selected: '=',
      lat: '=',
      lng: '='
    },
    link($scope, element) {
+    //  console.log('user scope', $scope.geometry);
      const map = new $window.google.maps.Map(element[0], {
        zoom: 3,
-       center: $scope.center
+       center: $scope.center,
+       scrollwheel: false
      });
-     // console.log($scope.locations);
-     // let infoWindow = null;
      let infoWindow = null;
      let marker = null;
      const markers = [];
+
+
    }
  }
  return directive;
