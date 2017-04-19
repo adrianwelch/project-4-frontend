@@ -22,6 +22,7 @@
           <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
           <li ng-if="main.isAuthenticated()"><a ui-sref="tripsNew" ui-sref-active="active">New Trip</a></li>
           <li><a ui-sref="tripsIndex" ui-sref-active="active">Trips</a></li>
+          <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUserId })" ui-sref-active="active">Profile</a></li>
         </ul>
       </nav>
     </header>

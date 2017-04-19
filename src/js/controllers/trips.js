@@ -55,7 +55,6 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg) {
       .then((leg) => {
         vm.trip.legs.push(leg);
         vm.leg = {};
-        $state.go('tripsShow')
       });
   }
 

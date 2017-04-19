@@ -27,8 +27,6 @@ function autocomplete($window) {
         $scope.lng = place.geometry.location.toJSON().lng;
         $scope.place = place.address_components[0].long_name;
         model.$setViewValue(element.val());
-        // scope.geometry = place.geometry.location.toJSON();
-        // model.$setViewValue(element.val());
       });
     }
   };

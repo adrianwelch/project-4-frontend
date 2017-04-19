@@ -4,30 +4,78 @@ angular
 
 googleMap.$inject = ['$window'];
 function googleMap($window) {
- const directive = {
-   restrict: 'E',
-   replace: true,
-   template: '<div class="google-map"></div>',
-   scope: {
-     center: '=',
-     location: '=',
-     selected: '=',
-     lat: '=',
-     lng: '='
-   },
-   link($scope, element) {
-    //  console.log('user scope', $scope.geometry);
-     const map = new $window.google.maps.Map(element[0], {
-       zoom: 3,
-       center: $scope.center,
-       scrollwheel: false
-     });
-     let infoWindow = null;
-     let marker = null;
-     const markers = [];
+  const directive = {
+    restrict: 'E',
+    replace: true,
+    template: '<div class="google-map"></div>',
+    scope: {
+      legs: '='
+    },
+    link($scope, element) {
+      const map = new $window.google.maps.Map(element[0], {
+        zoom: 3,
+        center: new $window.google.maps.LatLng(30, -12),
+        scrollwheel: false
+      });
+      let infoWindow = null;
+      let marker = null;
+      let markers = [];
+      let route = [];
+      let path = null;
 
+      function removeMarkers() {
+        console.log('inside removeMarkers()');
+        markers.forEach((marker) => {
+          marker.setMap(null);
+        });
 
-   }
- }
- return directive;
+        markers = [];
+        route = [];
+        if (path) path.setMap(null);
+
+        addMarkers();
+        addRoute();
+      }
+
+      function addRoute() {
+        $scope.legs.forEach((leg) => {
+          route.push(new $window.google.maps.LatLng(leg.lat, leg.lng));
+        });
+
+        path = new $window.google.maps.Polyline({
+          path: route,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+        path.setMap(map);
+      }
+
+      function addMarkers() {
+        $scope.legs.forEach((leg) => {
+          addMarker(leg)
+        });
+      }
+
+      function addMarker(leg) {
+        const latLng = new $window.google.maps.LatLng(leg.lat, leg.lng);
+
+        marker = new google.maps.Marker({
+          position: latLng,
+          map,
+          animation: google.maps.Animation.DROP,
+        });
+        markers.push(marker);
+        console.log('marker', marker);
+      }
+
+      $scope.$watch('legs', (newVal) => {
+        if ($scope.legs.length) removeMarkers();
+      }, true);
+
+    }
+  }
+
+  return directive;
 }
