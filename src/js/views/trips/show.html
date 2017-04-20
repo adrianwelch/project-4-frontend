@@ -4,7 +4,7 @@
       <div class="trip">
         <h1 class="title">{{ tripsShow.trip.title }}<p>Created by: <strong>{{ tripsShow.trip.username }}</strong></p><h1>
 
-        <google-map  class="map" legs="tripsShow.trip.legs" ng-if="tripsShow.trip.$resolved"></google-map>
+        <google-map class="map" legs="tripsShow.trip.legs" selected="tripsShow.selected" ng-if="tripsShow.trip.$resolved"></google-map>
 
         <button ng-click="tripsShow.toggleAttending()" ng-if="!tripsShow.isAttending()"     >Attend</button>
 
@@ -35,8 +35,7 @@
         <input type="date" id="date" name="date" ng-model="tripsShow.leg.date">
 
         <label for="location">Location</label>
-        <input type="text" autocomplete id="location" name="location" ng-model="tripsShow.location"  lat="tripsShow.stop.lat" lng="tripsShow.stop.lng" place="tripsShow.stop.name">
-
+        <input type="text" autocomplete id="location" name="location" ng-model="tripsShow.location" get-lat-lng="citiesIndex.getLatLng(lat,lng)" lat="tripsShow.stop.lat" lng="tripsShow.stop.lng" place="tripsShow.stop.name">
         <label for="base64">Image</label>
         <input type="file" base64 id="base64" name="base64" ng-model="tripsShow.leg.base64">
 

@@ -65,6 +65,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/users/:id',
       templateUrl: 'js/views/users/show.html',
       controller: 'UsersShowCtrl as usersShow'
+    })
+    .state('citiesIndex', {
+      url: '/cities',
+      templateUrl: 'js/views/cities/index.html',
+      controller: 'CitiesIndexCtrl as citiesIndex'
     });
 
     $urlRouterProvider.otherwise('/');

@@ -9,7 +9,8 @@ function googleMap($window) {
     replace: true,
     template: '<div class="google-map"></div>',
     scope: {
-      legs: '='
+      legs: '=',
+      selected: '='
     },
     link($scope, element) {
       const map = new $window.google.maps.Map(element[0], {
@@ -17,7 +18,7 @@ function googleMap($window) {
         center: new $window.google.maps.LatLng(30, -12),
         scrollwheel: false
       });
-      let infoWindow = null;
+      let infoWindow = new google.maps.InfoWindow();
       let marker = null;
       let markers = [];
       let route = [];
@@ -61,9 +62,7 @@ function googleMap($window) {
       }
 
       function addMarkers() {
-        $scope.legs.forEach((leg) => {
-          addMarker(leg)
-        });
+        $scope.legs.forEach(leg => addMarker(leg));
       }
 
       function addMarker(leg) {
@@ -79,20 +78,19 @@ function googleMap($window) {
 
         const htmlElement = `<div id="infoWindow">
                               <h3>${leg.location}</h3>
-                              <a>See More Info</a>
+                              <a>Take me Here</a>
                              </div>`;
 
         google.maps.event.addListener(marker, 'click', function () {
-          if(infoWindow) infoWindow.close();
-          infoWindow = new google.maps.InfoWindow({
-            content: htmlElement
-          });
+          infoWindow.close();
+
+          // $scope.getLatLng({lat: $scope.lat, lng: $scope.lng});
+
+          infoWindow.setContent(htmlElement);
 
           google.maps.event.addListener(infoWindow, 'domready', () => {
             document.getElementById('infoWindow').onclick = function handleWindowClick() {
-              $scope.selected = location;
-              $scope.lat = leg.latitude;
-              $scope.lng = leg.longitude;
+              $scope.selected = leg;
               $scope.$apply();
             };
 
@@ -106,7 +104,7 @@ function googleMap($window) {
       }, true);
 
     }
-  }
+  };
 
   return directive;
 }

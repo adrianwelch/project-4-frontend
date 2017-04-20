@@ -23,6 +23,7 @@ function autocomplete($window) {
 
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace();
+        console.log(place);
         $scope.lat = place.geometry.location.toJSON().lat;
         $scope.lng = place.geometry.location.toJSON().lng;
         $scope.place = place.address_components[0].long_name;

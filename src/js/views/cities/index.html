@@ -1,0 +1,16 @@
+<ul>
+  <h1>Cities</h1>
+  <li ng-repeat="flight in citiesIndex.flights">
+
+    <h2>{{ flight.DestinationCity }}</h2></a>
+    <div class="col-md-3">
+      <p>{{ flight.DestinationCountry}}</p>
+      </div>
+      <div class="col-md-2">
+        <p>£{{ flight.MinPrice}}</p>
+      </div>
+      <div class="col-md-4">
+        <p>{{ flight.CarrierName}}</p>
+      </div>
+  </li>
+</ul>
