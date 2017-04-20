@@ -76,6 +76,29 @@ function googleMap($window) {
         });
         markers.push(marker);
         // console.log('marker', marker);
+
+        const htmlElement = `<div id="infoWindow">
+                              <h3>${leg.location}</h3>
+                              <a>See More Info</a>
+                             </div>`;
+
+        google.maps.event.addListener(marker, 'click', function () {
+          if(infoWindow) infoWindow.close();
+          infoWindow = new google.maps.InfoWindow({
+            content: htmlElement
+          });
+
+          google.maps.event.addListener(infoWindow, 'domready', () => {
+            document.getElementById('infoWindow').onclick = function handleWindowClick() {
+              $scope.selected = location;
+              $scope.lat = leg.latitude;
+              $scope.lng = leg.longitude;
+              $scope.$apply();
+            };
+
+          });
+          infoWindow.open(map, this);
+        });
       }
 
       $scope.$watch('legs', (newVal) => {

@@ -1,6 +1,7 @@
 // Import all of your scss files here
 @import 'variables';
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500');
+@import 'extends';
 
 nav {
         ul {
@@ -12,8 +13,8 @@ nav {
         }
       }
 
-.google-map {
-  width: 900px;
+.map {
+  width: 1140px;
   height: 500px;
 }
 
@@ -57,6 +58,28 @@ nav {
   }
 }
 
+.comments {
+  @extend .border;
+  @extend .border--blue;
+  ul {
+    li {
+      &:not(:last-of-type) {
+        border-bottom: 1px solid lighten($brand-secondary, 30%);
+      }
+      padding: 10px 0;
+      button {
+        font-size: 8px;
+        padding: 2px 4px;
+        @extend .button;
+        @extend .button--blue;
+        margin-left: 10px;
+        position: relative;
+        top: -2px;
+      }
+    }
+  }
+}
+
 button, input, textarea {
   font-family: 'Quicksand', sans-serif;
 }
@@ -76,6 +99,16 @@ h1, h2, h5 {
   letter-spacing: 2px;
 }
 
+h1 {
+  text-align: center;
+  display: block;
+}
+
 .createdBy {
   font-size: 20px;
+}
+
+
+.title {
+  text-align: center;
 }
