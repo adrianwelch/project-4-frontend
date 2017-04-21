@@ -12,7 +12,7 @@ function CitiesIndexCtrl(flights) {
     flights.getFlights(lat, lng)
       .then((quotes) => {
         vm.flights = quotes;
-        console.log('vm.flights', vm.flights);
+        // console.log('vm.flights', vm.flights);
       });
   }
 }

@@ -32,15 +32,18 @@ function TripsNewCtrl(Trip, User, $state) {
 TripsShowCtrl.$inject = ['Trip', 'User', 'Comment', '$stateParams', '$state', '$auth', 'Leg', '$scope', 'flights'];
 function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $scope, flights) {
   const vm = this;
+  // vm.flights = []
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.trip = Trip.get($stateParams);
 
+  vm.flights = {};
+
   function getFlights(lat, lng) {
     flights.getFlights(lat, lng)
-      .then((quotes) => {
-        vm.flights = quotes;
-        console.log('vm.flights', vm.flights);
+      .then((response) => {
+        vm.flights = response
+        console.log('controller', vm.flights);
       });
   }
 
@@ -57,9 +60,9 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
     vm.leg.lat = vm.stop.lat;
     vm.leg.lng = vm.stop.lng;
 
-    console.log('location', vm.stop.name);
-    console.log('lat', vm.stop.lat);
-    console.log('lng', vm.stop.lng);
+    // console.log('location', vm.stop.name);
+    // console.log('lat', vm.stop.lat);
+    // console.log('lng', vm.stop.lng);
 
 
     Leg
@@ -74,7 +77,6 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
   vm.create = legsCreate;
 
   function deleteLeg(leg) {
-    console.log(leg);
     Leg
     .delete({ id: leg.id })
     .$promise

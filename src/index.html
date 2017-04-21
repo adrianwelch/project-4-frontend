@@ -7,6 +7,7 @@
     <title>Angular Stack Setup</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWiBf3aYX4Q9m45JmMnYPVaR1uf35qIaQ&libraries=places,geometry"></script>
+    <script src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBS-euBFLe7zVu1TkuC0OsvM982OCzDYwI&callback=initMap"></script>
     <!-- inject:js -->
     <!-- endinject -->
     <!-- inject:css -->
@@ -23,7 +24,7 @@
           <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
           <li ng-if="main.isAuthenticated()"><a ui-sref="tripsNew" ui-sref-active="active">New Trip</a></li>
           <li><a ui-sref="tripsIndex" ui-sref-active="active">Trips</a></li>
-          <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUserId })" ui-sref-active="active">Profile</a></li>
+          <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })" ui-sref-active="active">Profile</a></li>
         </ul>
       </nav>
     </header>

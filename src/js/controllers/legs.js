@@ -93,11 +93,14 @@ function LegsShowCtrl(Leg, User, Comment, $stateParams, $state, $auth) {
 LegsEditCtrl.$inject = ['Leg', 'User', '$stateParams', '$state'];
 function LegsEditCtrl(Leg, User, $stateParams, $state) {
   const vm = this;
+  vm.leg = Leg.get($stateParams);
 
-  Leg.get($stateParams).$promise.then((leg) => {
-    vm.leg = leg;
-    vm.leg.date = new Date(leg.date);
-  });
+
+
+  // Leg.get($stateParams).$promise.then((leg) => {
+  //   vm.leg = leg;
+  //   vm.leg.date = new Date(leg.date);
+  // });
 
   vm.users = User.query();
 
@@ -105,7 +108,7 @@ function LegsEditCtrl(Leg, User, $stateParams, $state) {
     Leg
       .update({id: vm.leg.id, leg: vm.leg })
       .$promise
-      .then(() => $state.go('legsShow', { id: vm.leg.id }));
+      .then(() => $state.go('tripsShow', { id: vm.leg.trip.id }));
   }
 
   vm.update = legsUpdate;

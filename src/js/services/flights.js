@@ -5,13 +5,17 @@ angular
 Flights.$inject = ['$http', 'API_URL'];
 function Flights($http, API_URL) {
   const vm = this;
+  // vm.flights = [];
 
   function getFlights(lat,lng) {
-    console.log(lat, lng);
+    // console.log(lat, lng);
     return $http
-      .get(`${API_URL}/flights`, { params: { lat, lng } }) 
+      .get(`${API_URL}/flights`, { params: { lat, lng } })
       .then((response) => {
-        console.log(response);
+        // console.log(vm.carriers);
+        vm.flights = response.data;
+        console.log('service', vm.flights);
+        // vm.response.data = flights;
         response.data.Quotes.forEach((quote) => {
           const destination = response.data.Places.find((place) => {
             return place.PlaceId === quote.OutboundLeg.DestinationId;

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6">
       <div class="trip">
-        <h1 class="title">{{ tripsShow.trip.title }}<p>Created by: <strong>{{ tripsShow.trip.username }}</strong></p><h1>
+        <h1 class="title">{{ tripsShow.trip.title }}<p>Created by: <strong>{{tripsShow.trip.user.username}}</strong></p><h1>
 
         <google-map class="map" legs="tripsShow.trip.legs" selected="tripsShow.selected" ng-if="tripsShow.trip.$resolved"></google-map>
 
@@ -45,10 +45,22 @@
       </form>
     </div>
 
+    <div class="flights">
+      <ul>
+        <li ng-repeat="flight in tripsShow.flights">
+          <div class="row">
+            <div class="col-md-12">
+              <p><strong>Airline: </strong>{{ flight.CarrierName}} <br> <strong>Destination: </strong> {{flight.DestinationCity}},{{flight.DestinationCountry}} <br> <strong>Fare: </strong> {{flight.MinPrice}}
+              </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+
     <div ng-repeat="leg in tripsShow.trip.legs" class="col-md-4 dates-content">
-      <h3>Date: {{leg.date}} <br> Location: {{ leg.location }} <br> description: <br>{{leg.description}} <br> <img ng-src="{{ leg.image_src }}"></h3>
-      <p>{{ main.currentUser.id }} - {{ tripsShow.trip.user.id }}</p>
-      <button ui-sref="legsEdit({id: tripsShow.trip.legs.id})" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Edit</button>
+      <h3>Date: {{leg.date}} <br> Location: {{ leg.location }} <br> description: <br>{{leg.description}} <br> <img ng-src="{{ leg.image_src }}"></h3> {{ leg.CarrierName }}
+      <button ui-sref="legsEdit({id: leg.id})" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Edit</button>
       <button ng-click="tripsShow.deleteLeg(leg)" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Delete</button>
 
     </div>

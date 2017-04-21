@@ -1,26 +1,50 @@
 angular
   .module('project4')
+  .controller('UsersIndexCtrl', UsersIndexCtrl)
   .controller('UsersEditCtrl', UsersEditCtrl)
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['User', 'Trip', '$stateParams', '$state'];
-function UsersShowCtrl(User, Trip, $stateParams, $state) {
-  const vm = this;
-  vm.userTrips = [];
+UsersIndexCtrl.$inject = ['User'];
+  function UsersIndexCtrl(User) {
+    const vm = this;
 
-  vm.user = User.get($stateParams, (user) => {
-    vm.user = user;
-    vm.userTrips = Trip.query({ createdBy: user.id });
-    console.log(vm.userTrips);
-  });
-
-  function usersDelete() {
-    vm.user
-      .$remove()
-      .then(() => $state.go('tripsIndex'));
+    vm.all = User.query();
   }
 
+UsersShowCtrl.$inject = ['User', '$stateParams', '$state', '$auth'];
+  function UsersShowCtrl(User, $stateParams, $state, $auth) {
+    const vm = this;
+    vm.userTrips = [];
+    vm.userLegs = [];
+
+    if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
+
+    vm.user = User.get($stateParams).$promise.then((user) => {
+      vm.user = user
+      vm.userTrips = vm.user.trips_created;
+      vm.userLegs = vm.user.trips.legs;
+      console.log(vm.user.trips.legs);
+    });
+
+    function usersDelete() {
+
+      vm.user
+        .$remove()
+        .then(() => {
+          $auth.logout();
+          $state.go('register');
+        });
+    }
   vm.delete = usersDelete;
+
+  function create() {
+    Trip.save(vm.trip, () => {
+      $state.go('tripsIndex');
+    });
+  }
+  vm.create = create;
+
+
 }
 
 UsersEditCtrl.$inject = ['User', '$stateParams', '$state'];
