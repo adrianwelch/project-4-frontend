@@ -32,7 +32,6 @@ function TripsNewCtrl(Trip, User, $state) {
 TripsShowCtrl.$inject = ['Trip', 'User', 'Comment', '$stateParams', '$state', '$auth', 'Leg', '$scope', 'flights'];
 function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $scope, flights) {
   const vm = this;
-  // vm.flights = []
   if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
   vm.trip = Trip.get($stateParams);
@@ -129,11 +128,15 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
 
   function toggleAttending() {
     const index = vm.trip.joiner_ids.indexOf(vm.currentUser.id);
+    // console.log(index); < -1
     if (index > -1) {
       vm.trip.joiner_ids.splice(index, 1);
       vm.trip.joiners.splice(index, 1);
     } else {
       vm.trip.joiner_ids.push(vm.currentUser.id);
+      console.log(vm.trip.joiner_ids);
+      console.log('currentuser', vm.currentUser.id);
+      console.log(vm.trip.joiner_ids.push(vm.currentUser.id));
       vm.trip.joiners.push(vm.currentUser);
     }
     tripsUpdate();

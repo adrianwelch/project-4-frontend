@@ -12,29 +12,28 @@ UsersIndexCtrl.$inject = ['User'];
   }
 
 UsersShowCtrl.$inject = ['User', '$stateParams', '$state', '$auth'];
-  function UsersShowCtrl(User, $stateParams, $state, $auth) {
-    const vm = this;
-    vm.userTrips = [];
-    vm.userLegs = [];
+function UsersShowCtrl(User, $stateParams, $state, $auth) {
+  const vm = this;
+  vm.userTrips = [];
+  vm.userLegs = [];
 
-    if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
+  if ($auth.getPayload()) vm.currentUser = User.get({ id: $auth.getPayload().id });
 
-    vm.user = User.get($stateParams).$promise.then((user) => {
-      vm.user = user
-      vm.userTrips = vm.user.trips_created;
-      vm.userLegs = vm.user.trips.legs;
-      console.log(vm.user.trips.legs);
+  User.get($stateParams)
+    .$promise
+    .then((user) => {
+      vm.user = user;
     });
 
-    function usersDelete() {
+  function usersDelete() {
+    vm.user
+      .$remove()
+      .then(() => {
+        $auth.logout();
+        $state.go('register');
+      });
+  }
 
-      vm.user
-        .$remove()
-        .then(() => {
-          $auth.logout();
-          $state.go('register');
-        });
-    }
   vm.delete = usersDelete;
 
   function create() {
@@ -42,8 +41,8 @@ UsersShowCtrl.$inject = ['User', '$stateParams', '$state', '$auth'];
       $state.go('tripsIndex');
     });
   }
+  
   vm.create = create;
-
 
 }
 

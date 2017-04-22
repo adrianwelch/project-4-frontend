@@ -1,11 +1,14 @@
 <div class="container">
   <h2>all of {{ usersShow.user.username }}'s trips</h2>
   <div class="row">
-    <div ng-repeat="trip in usersShow.userTrips">
+
+    <div ng-repeat="trip in usersShow.user.trips_created">
       <a ui-sref="tripsShow({ id: trip.id })"><h3>{{ trip.title }}</h3></a>
+
+      <div ng-repeat="leg in trip.legs">
+        <p>{{ leg.location }}</p>
+      </div>
     </div>
-    <div ng-repeat="leg in usersShow.userLegs">
-      <a ui-sref="tripsShow({ id: trip.id })"><h3>{{ leg.location }}</h3></a>
-    </div>
+    <button ui-sref="usersEdit({id: user.id})" ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id">Edit</button>
   </div>
 </div>

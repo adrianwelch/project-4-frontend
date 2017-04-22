@@ -46,11 +46,15 @@
     </div>
 
     <div class="flights">
+      <li ng-repeat="flight in tripsShow.flights|limitTo:1">
+        <h2>Flights to: </strong> {{flight.DestinationCity}}, {{flight.DestinationCountry}} <br> <strong></h2>
+      </li>
       <ul>
+
         <li ng-repeat="flight in tripsShow.flights">
           <div class="row">
             <div class="col-md-12">
-              <p><strong>Airline: </strong>{{ flight.CarrierName}} <br> <strong>Destination: </strong> {{flight.DestinationCity}},{{flight.DestinationCountry}} <br> <strong>Fare: </strong> {{flight.MinPrice}}
+              <p><strong>Airline: </strong>{{ flight.CarrierName}} <br> <strong>Destination: <br> Fare: </strong> £{{flight.MinPrice}}
               </p>
           </div>
         </li>
