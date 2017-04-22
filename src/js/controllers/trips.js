@@ -52,8 +52,8 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
   });
 
   function legsCreate() {
-    vm.leg.trip_id = vm.trip.id;
 
+    vm.leg.trip_id = vm.trip.id;
 
     vm.leg.location = vm.stop.name;
     vm.leg.lat = vm.stop.lat;
@@ -62,6 +62,7 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
     // console.log('location', vm.stop.name);
     // console.log('lat', vm.stop.lat);
     // console.log('lng', vm.stop.lng);
+    console.log(vm.leg.location);
 
 
     Leg
@@ -71,6 +72,7 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
         vm.trip.legs.push(leg);
         vm.leg = {};
       });
+      vm.location = null;
   }
 
   vm.create = legsCreate;
@@ -134,10 +136,14 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
       vm.trip.joiners.splice(index, 1);
     } else {
       vm.trip.joiner_ids.push(vm.currentUser.id);
-      console.log(vm.trip.joiner_ids);
+      console.log('trip joiner id', vm.trip.joiner_ids);
       console.log('currentuser', vm.currentUser.id);
-      console.log(vm.trip.joiner_ids.push(vm.currentUser.id));
+
+
       vm.trip.joiners.push(vm.currentUser);
+
+      console.log('pushing joiner id to currend user id', vm.trip.joiners.push(vm.currentUser.id));
+
     }
     tripsUpdate();
   }

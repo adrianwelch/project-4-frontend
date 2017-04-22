@@ -9,6 +9,6 @@
         <p>{{ leg.location }}</p>
       </div>
     </div>
-    <button ui-sref="usersEdit({id: user.id})" ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id">Edit</button>
+    <button ui-sref="usersEdit({id: usersShow.user.id})" ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id">Edit Profile</button>
   </div>
 </div>

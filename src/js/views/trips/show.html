@@ -50,16 +50,16 @@
         <h2>Flights to: </strong> {{flight.DestinationCity}}, {{flight.DestinationCountry}} <br> <strong></h2>
       </li>
       <ul>
-
         <li ng-repeat="flight in tripsShow.flights">
           <div class="row">
             <div class="col-md-12">
               <p><strong>Airline: </strong>{{ flight.CarrierName}} <br> <strong>Destination: <br> Fare: </strong> £{{flight.MinPrice}}
               </p>
+            </div>
           </div>
         </li>
       </ul>
-    </div>
+
 
 
     <div ng-repeat="leg in tripsShow.trip.legs" class="col-md-4 dates-content">

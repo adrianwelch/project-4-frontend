@@ -41,7 +41,7 @@ function UsersShowCtrl(User, $stateParams, $state, $auth) {
       $state.go('tripsIndex');
     });
   }
-  
+
   vm.create = create;
 
 }
@@ -49,14 +49,12 @@ function UsersShowCtrl(User, $stateParams, $state, $auth) {
 UsersEditCtrl.$inject = ['User', '$stateParams', '$state'];
 function UsersEditCtrl(User, $stateParams, $state) {
   const vm = this;
-
   vm.user = User.get($stateParams);
 
   function usersUpdate() {
-    vm.user
-      .$update()
+    User.update({ id: vm.user.id, user: vm.user })
+      .$promise
       .then(() => $state.go('usersShow', $stateParams));
   }
-
   vm.update = usersUpdate;
 }
