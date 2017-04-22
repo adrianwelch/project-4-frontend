@@ -58,7 +58,7 @@ nav {
   }
 }
 
-.comments {
+.content {
   @extend .border;
   @extend .border--blue;
   ul {
@@ -111,4 +111,31 @@ h1 {
 
 .title {
   text-align: center;
+}
+
+.legContent {
+  border: 2px solid $brand-secondary;
+  margin: 2px;
+}
+
+img {
+  width: 600px;
+  height: 400px;
+}
+
+.file {
+  font-size: 12px;
+}
+
+.dateShow {
+  width: 185px;
+}
+
+.legLocation {
+  // margin-left: 235%;
+}
+
+.legDescription {
+  // margin-left: 370%;
+  // width: 350px;
 }
