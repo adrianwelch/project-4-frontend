@@ -14,8 +14,8 @@ function googleMap($window) {
     },
     link($scope, element) {
       const map = new $window.google.maps.Map(element[0], {
-        zoom: 3,
-        center: new $window.google.maps.LatLng(30, -12),
+        zoom: 2,
+        center: new $window.google.maps.LatLng(32.2287166, 29.9120764),
         scrollwheel: false
       });
       let infoWindow = new google.maps.InfoWindow();
@@ -66,12 +66,30 @@ function googleMap($window) {
       }
 
       function addMarker(leg) {
+
+        // var icon = {
+        // path: "M-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0",
+        // fillColor: '#FF0000',
+        // fillOpacity: .6,
+        // anchor: new google.maps.Point(0,0),
+        // strokeWeight: 0,
+        // scale: 1
+        // }
+        var icon = {
+        url: "https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/location_marker_pin-512.png",
+        scaledSize: new google.maps.Size(25,25)
+        }
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var labelIndex = 0;
+
         const latLng = new $window.google.maps.LatLng(leg.lat, leg.lng);
 
         marker = new google.maps.Marker({
           position: latLng,
           map,
           animation: google.maps.Animation.DROP,
+          label: labels[labelIndex++ % labels.length],
+          icon
         });
         markers.push(marker);
         // console.log('marker', marker);

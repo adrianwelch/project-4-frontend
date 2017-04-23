@@ -116,6 +116,7 @@ h1 {
 .legContent {
   border: 2px solid $brand-secondary;
   margin: 2px;
+  display: inline-block;
 }
 
 img {
@@ -128,14 +129,19 @@ img {
 }
 
 .dateShow {
-  width: 185px;
+  width: 180px;
+  margin-right: 13%;
 }
 
 .legLocation {
-  // margin-left: 235%;
+  width: 200px;
 }
 
 .legDescription {
   // margin-left: 370%;
   // width: 350px;
+}
+
+li {
+  list-style-type: none
 }
