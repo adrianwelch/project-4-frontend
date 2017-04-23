@@ -3,6 +3,80 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500');
 @import 'extends';
 
+.home {
+  background-image: url('http://i.imgur.com/hR14jVH.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.login {
+  background-image: url('http://i.imgur.com/hR14jVH.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.reg {
+  background-image: url('http://i.imgur.com/hR14jVH.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.generalbutton {
+    background: none;
+    color: rgb(249, 188, 188);
+    border: none;
+    padding: 5px 20px;
+    margin-top: 10%;
+    margin-left: 30%;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    &:hover {
+      background: none;
+      color: white;
+      animation: pulse 1s infinite;
+    }
+}
+
+.loginForm {
+  border-radius: 5%;
+  padding: 12px;
+  background-color: rgba(60,1,1,.4);
+  color: white;
+  margin-top: 41%;
+  text-align: center;
+    input {
+      margin: 10px;
+    }
+}
+.logBtns {
+  margin-left: 30px;
+    .loginbutton {
+      @extend .generalbutton;
+      }
+}
+
+.regForm {
+  border-radius: 5%;
+  padding: 12px;
+  background-color: rgba(60,1,1,.4);
+  color: white;
+  margin-top: 41%;
+  text-align: center;
+    input {
+      margin: 10px;
+    }
+}
+.regBtns {
+  margin-left: 30px;
+    .regButton {
+      @extend .generalbutton;
+      }
+}
+
 nav {
         ul {
           li {
@@ -36,7 +110,7 @@ nav {
           font-weight: 500;
           text-transform: uppercase;
           letter-spacing: 3px;
-          &:hover, &:focus {
+          &:hover {
             color: grey;
 
           &.active {
@@ -49,7 +123,7 @@ nav {
               height: 2px;
               width: 100%;
               border-radius: 2px;
-              background-color: black;
+              background-color: white;
             }
           }
         }
@@ -110,7 +184,10 @@ h1 {
 
 
 .title {
-  text-align: center;
+  font-family: 'Pacifico', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #15837c;
 }
 
 .legContent {
@@ -138,10 +215,15 @@ img {
 }
 
 .legDescription {
-  // margin-left: 370%;
-  // width: 350px;
+  font-family: 'Pacifico', cursive;
+  letter-spacing: 2px;
+}
+
+.descriptionShow {
+  font-family: 'Pacifico', cursive;
+  letter-spacing: 2px;
 }
 
 li {
-  list-style-type: none
+  list-style-type: none;
 }

@@ -10,5 +10,6 @@
       </div>
     </div>
     <button ui-sref="usersEdit({id: usersShow.user.id})" ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id">Edit Profile</button>
+     <button ng-click="usersShow.delete()" class="btn btn-danger">Delete Your Profile</button>
   </div>
 </div>

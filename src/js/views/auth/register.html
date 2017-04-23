@@ -1,27 +1,30 @@
-<div class="row">
+<div class="row reg">
   <div class="col-md-6">
     <form ng-submit="auth.register()">
-      <div>
-        <label>Username</label>
-        <input type="text" ng-model="auth.user.username">
-      </div>
+      <div class="regForm">
+        <div>
+          <label>Username</label>
+          <input type="text" ng-model="auth.user.username">
+        </div>
 
-      <div>
-        <label>Email</label>
-        <input type="text" ng-model="auth.user.email">
-      </div>
+        <div>
+          <label>Email</label>
+          <input type="text" ng-model="auth.user.email">
+        </div>
 
-      <div>
-        <label>Password</label>
-        <input type="password" ng-model="auth.user.password">
-      </div>
+        <div>
+          <label>Password</label>
+          <input type="password" ng-model="auth.user.password">
+        </div>
 
-      <div>
-        <label>Password Confirmation</label>
-        <input type="password" ng-model="auth.user.password_confirmation">
+        <div>
+          <label>Password Confirmation</label>
+          <input type="password" ng-model="auth.user.password_confirmation">
+        </div>
+        <div class="regBtns">
+          <button class="regButton">Register</button>
+        </div>
       </div>
-
-      <button>Register</button>
     </form>
   </div>
 </div>
