@@ -2,12 +2,29 @@
 @import 'variables';
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500');
 @import 'extends';
+$main-color: #FF999C;
+
+.centered-styles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .home {
   background-image: url('http://i.imgur.com/hR14jVH.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
+  h1 {
+   @extend .centered-styles;
+   color: white;
+   font-size: 60px;
+   font-weight: bold;
+   letter-spacing: -3px;
+   text-shadow: 2px 2px blue;
+   margin-top: -15%;
+ }
 }
 
 .login {
