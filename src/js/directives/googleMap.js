@@ -96,7 +96,7 @@ function googleMap($window) {
 
         const htmlElement = `<div id="infoWindow">
                               <h3>${leg.location}</h3>
-                              <a>Take me Here</a>
+                              <a class="take">Take Me Here</a>
                              </div>`;
 
         google.maps.event.addListener(marker, 'click', function () {

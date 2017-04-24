@@ -1,13 +1,14 @@
-<div class="left"></div>
-<div class="row right">
-  <div class="col-md-6">
-    <form name="tripsNew.newTrip" ng-submit="tripsNew.create()" novalidate>
-      <label for="title">Title</label>
-      <input type="text" id="title" name="title" ng-model="tripsNew.trip.title" required>
-      <button>Create</button>
-  <div class="ng-message-error" ng-messages="tripsNew.newTrip.title.$error" ng-show="(tripsNew.newTrip.$submitted || tripsNew.newTrip.title.$touched)">
-        <p ng-message="required">Title is required.</p>
-  </div>
-    </form>
+<div class="newTrip">
+  <div class="left"></div>
+  <div class="row right">
+    <div class="col-md-6">
+      <form name="tripsNew.newTrip" ng-submit="tripsNew.create()" novalidate>
+        <label class="newTripTitle" for="title">Title</label>
+        <input type="text" id="title" name="title" ng-model="tripsNew.trip.title" required>
+        <!-- <div class="ng-message-error" ng-messages="tripsNew.newTrip.title.$error" ng-show="(tripsNew.newTrip.$submitted || tripsNew.newTrip.title.$touched)"> -->
+        <button class="btn btn-primary createTrip">Create</button>
+    </div>
+      </form>
+    </div>
   </div>
 </div>

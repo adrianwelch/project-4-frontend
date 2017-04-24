@@ -1,18 +1,19 @@
 <div class="container">
   <div class="left"></div>
-  <div class="right">
-    <h2>all of {{ usersShow.user.username }}'s trips</h2>
-    <div class="row">
-
-      <div ng-repeat="trip in usersShow.user.trips_created">
-        <a ui-sref="tripsShow({ id: trip.id })"><h3>{{ trip.title }}</h3></a>
+  <div class="right userRight">
+    <h2 class="usersName">All of {{ usersShow.user.username }}'s Trips</h2>
+    <div class="row usersTripsCentered">
+      <div class="usersTrips" ng-repeat="trip in usersShow.user.trips_created">
+        <a ui-sref="tripsShow({ id: trip.id })"><h3 class="tripTitle">{{ trip.title }}</h3></a>
 
         <div ng-repeat="leg in trip.legs">
-          <p>{{ leg.location }}</p>
+          <p class="userLocations">{{ leg.location }} <h3 class="userDates"> {{leg.date|date:'dd/MM/yyyy'}}</h3> </p>
+          <img class="userImages img-rounded" ng-src="{{ leg.image_src }}">
+          <hr>
         </div>
       </div>
-      <button ui-sref="usersEdit({id: usersShow.user.id})" ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id">Edit Profile</button>
-       <button ng-click="usersShow.delete()" class="btn btn-danger">Delete Your Profile</button>
+      <button class="btn btn-primary" ui-sref="usersEdit({id: usersShow.user.id})" ng-if="main.isAuthenticated() && main.currentUser.id === usersShow.user.id">Edit Profile</button>
+       <button class="btn btn-danger" ng-click="usersShow.delete()" class="btn btn-danger">Delete Your Profile</button>
     </div>
   </div>
 </div>

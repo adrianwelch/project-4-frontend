@@ -86,12 +86,12 @@
         <div ng-repeat="leg in tripsShow.trip.legs" class="dates-content row">
           <div class="col-md-6 dateShow">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <h3 class="flightsTo">
                   <span class="bold">Date: </span><br>{{leg.date|date:'dd/MM/yyyy'}}
                 </h3>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <h3 class= "flightsTo">
                  <span class="bold">Location:</span><br> {{ leg.location }}
                 </h3>
@@ -113,11 +113,12 @@
         </div>
       </div>
 
+
       <div class="row">
         <div class="col-md-6">
           <h2 class="commentsTitle">Comments</h2>
           <ul>
-            <li ng-repeat="comment in tripsShow.trip.comments"><span class="body">{{ comment.body }}</span> -       <span class="userComment">{{ comment.user.username }}</span><button class="btn btn-danger delCom" ng-click="tripsShow.deleteComment(comment)" "ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
+            <li ng-repeat="comment in tripsShow.trip.comments"><span class="body">{{ comment.body }}</span> -       <span class="userComment">{{ comment.user.username }}</span><button class="btn btn-danger delCom" ng-click="tripsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
           </ul>
         </div>
         <div class="col-md-6" ng-if="main.isAuthenticated()">

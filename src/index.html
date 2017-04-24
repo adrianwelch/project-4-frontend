@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Palanquin+Dark:400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <script src="https://use.fontawesome.com/b3d206d422.js"></script>
     <!-- <script src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBS-euBFLe7zVu1TkuC0OsvM982OCzDYwI&callback=googleMap"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWiBf3aYX4Q9m45JmMnYPVaR1uf35qIaQ&libraries=places,geometry"></script>
@@ -23,14 +25,13 @@
     <header>
       <nav>
         <ul>
-          <li><a ui-sref="home">Home</a></li>
-
+          <li><a class="navA" ui-sref="home">Home</a></li>
           <li class="loginLi" ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">Login</a></li>
-          <li ng-if="!main.isAuthenticated()"><a ui-sref="register" ui-sref-active="active">Register</a></li>
-          <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
-          <li ng-if="main.isAuthenticated()"><a ui-sref="tripsNew" ui-sref-active="active">New Trip</a></li>
-          <li><a ui-sref="tripsIndex" ui-sref-active="active">Trips</a></li>
-          <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUser.id })" ui-sref-active="active">Profile</a></li>
+          <li ng-if="!main.isAuthenticated()"><a class="navA" ui-sref="register" ui-sref-active="active">Register</a></li>
+          <li ng-if="main.isAuthenticated()"><a class="navA" ng-click="main.logout()" href="#">Logout</a></li>
+          <li ng-if="main.isAuthenticated()"><a class="navA" ui-sref="tripsNew" ui-sref-active="active">New Trip</a></li>
+          <li><a class="navA" ui-sref="tripsIndex" ui-sref-active="active">Trips</a></li>
+          <li ng-if="main.isAuthenticated()"><a class="navA" ui-sref="usersShow({ id: main.currentUser.id })" ui-sref-active="active">Profile</a></li>
         </ul>
       </nav>
     </header>

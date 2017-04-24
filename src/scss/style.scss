@@ -8,6 +8,9 @@ img  {
   max-width: 100%;
 }
 
+body {
+  font-family: 'Lato', sans-serif;
+}
 .centered-styles {
   position: absolute;
   top: 50%;
@@ -23,13 +26,18 @@ img  {
   margin-top: -60px;
   h1 {
    @extend .centered-styles;
-   color: #262525;
+   color: #ffffff;
    font-size: 60px;
    font-weight: bold;
-   letter-spacing: -3px;
-   text-shadow: 3px 2px ghostwhite;
    margin-top: 2%;
+   letter-spacing: 10px;
+   text-transform: uppercase;
+   font-family: 'Palanquin Dark', sans-serif;
  }
+}
+
+h2 {
+  font-family: 'Palanquin Dark', sans-serif;
 }
 
 .loginLi {
@@ -56,16 +64,25 @@ img  {
   }
 }
 
+.navA {
+  position: relative;
+  z-index: 100;
+  &:hover {
+    color: #73b6bf;
+  }
+}
+
 .left {
     width: 40%;
     top: 0;
     left: 0;
     height: 100vh;
     position: fixed;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)), url('/images/food.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)), url('/images/left.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    z-index: 1;
   }
   .right {
     width: 60%;
@@ -97,13 +114,13 @@ img  {
 .loginForm {
   border-radius: 5%;
   padding: 12px;
-  background-color: rgba(60,1,1,.4);
+  background-color: rgba(0, 0, 0, 0.4);
   color: #f9bcbc;
   margin-top: 44%;
   text-align: center;
   width: 355px;
   margin-left: 30%;
-  margin-top: 35%;
+  margin-top: 30%;
     input {
       margin: 10px;
       width: 185px;
@@ -139,9 +156,9 @@ i {
   font-size: 16px;
   border-radius: 5%;
   padding: 12px;
-  background-color: rgba(60,1,1,.4);
+  background-color: rgba(0, 0, 0, 0.4);
   color: white;
-  margin-top: 44%;
+  margin-top: 30%;
   text-align: center;
   input {
     margin: 10px;
@@ -158,10 +175,15 @@ i {
 .regInputs {
   width: 165px;
   color: #f9bcbc;
+  font-family: 'Lato', sans-serif;
+}
+
+.pc {
+  margin-top: 5px;
 }
 
 .loginInput {
-  font-family: 'Lobster', cursive;
+  font-family: 'Lato', sans-serif;
   letter-spacing: 1px;
   font-size: 16px;
   width: 100px;
@@ -177,14 +199,25 @@ i {
 
 .index {
   h2 {
-    font-family: 'Pacifico', sans-serif;
-    color: #c67f7f;
-    .createdBy {
-      font-family: 'Pacifico', sans-serif;
-      font-size: 12px;
-      color: #c67f7f;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: rgb(0, 51, 79);
+    // color: #00334F;
+    p.createdBy {
+      font-family: 'Lato', sans-serif;
+      font-weight: 100;
+      font-size: 18px;
+      color: #00334F;
+      text-transform: capitalize;
+      letter-spacing: 0px;
     }
   }
+}
+
+main {
+  background-color: #fff9f9;
 }
 
 nav {
@@ -192,11 +225,36 @@ nav {
     li {
       a {
         color: black;
+        margin-right: 20px;
+        &:hover{
+          color: #73b6bf;
+        }
       }
     }
   }
 }
 
+.usersName {
+  margin-bottom: 6%;
+  font-family: 'Lato', sans-serif;
+  color: #00334F;
+  letter-spacing: 3px;
+  margin-top: -5%;
+}
+
+.usersTrips {
+  margin-bottom: 7%;
+}
+
+header {
+  background-color: #fff9f9;
+  // position: relative;
+  z-index: 1;
+}
+
+.userRight {
+  background-color: #fff9f9;
+}
 .topContent {
   margin-bottom: -9%;
 }
@@ -206,6 +264,10 @@ nav {
   height: 500px;
 }
 
+.userRight {
+  background-color: #fff9f9;
+  height: 100vh;
+}
 
 nav {
     height: 60px;
@@ -221,12 +283,12 @@ nav {
           margin-left: 25px;
         }
         a {
-          color: black;
+          color: #00334F;
           font-weight: 500;
           text-transform: uppercase;
           letter-spacing: 3px;
           &:hover {
-            color: grey;
+            color: black;
 
           &.active {
             position: relative;
@@ -246,6 +308,46 @@ nav {
     }
   }
 }
+
+// .navA {
+//     height: 60px;
+//     ul {
+//       li {
+//         line-height: 60px;
+//         display: inline-block;
+//         &:first-child {
+//           font-size: 24px;
+//         }
+//         &:not(:first-child) {
+//           float: right;
+//           margin-left: 25px;
+//         }
+//         a {
+//           color: #00334F;
+//           font-weight: 500;
+//           text-transform: uppercase;
+//           letter-spacing: 3px;
+//           &:hover {
+//             color: white;
+//
+//           &.active {
+//             position: relative;
+//             &:after {
+//               content: "";
+//               position: absolute;
+//               bottom: -2px;
+//               left: 0;
+//               height: 2px;
+//               width: 100%;
+//               border-radius: 2px;
+//               background-color: white;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 .joiners {
   float: right;
@@ -312,13 +414,13 @@ span {
 }
 
 .info {
-  margin-left: 10%;
+  color: #73b6bf;
 }
 
 
 
 .flights {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Lato', sans-serif;
 //       @extend .border;
 //       @extend .border--blue;
 //       // padding: 5%;
@@ -343,9 +445,11 @@ span {
     }
 
 .flightsTo {
-  font-family: 'Indie Flower', cursive;
-  margin-left: 17%;
+  font-family: 'Lato', sans-serif;
   color: #00334F;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 3px;
 }
 
 .userComment {
@@ -358,16 +462,63 @@ span {
 .commentsTitle {
   margin-left: 25%;
   color: #00334F;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Lato', sans-serif;
   font-weight: bold;
 }
 
 .addComment {
   color: #00334F;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Lato', sans-serif;
   font-weight: bold;
 }
 
+.take {
+  font-size: 18px;
+}
+
+.title {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #00334F;
+}
+
+.newTripTitle {
+  letter-spacing: 2px;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.tripTitle {
+  font-family: 'Lato', sans-serif;
+  color: #00334F;
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.userLocations {
+  font-family: 'Lato', sans-serif;
+  color: #00334F;
+  font-size: 22px;
+}
+
+.createTrip {
+  height: 26px;
+  width: 80px;
+  padding: 0px;
+  margin-top: 0px;
+  margin-left: 2%;
+}
+
+.tripTitleInput{
+  width: 180px;
+}
+
+#infoWindow {
+  text-align: center;
+  color: #00334F;
+}
 .delCom {
   height: 20px;
   width: 35px;
@@ -378,42 +529,30 @@ span {
 
 .createComm {
   margin-top: 11%;
-  margin-left: -32%; 
+  margin-left: -32%;
 }
 
 .body {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Lato', sans-serif;
   margin-left: 17%;
   color: #00334F;
   font-size: 28px;
 }
 
 button, input, textarea {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 a, a:hover, a:focus {
   color: black;
-  text-decoration: none;
 }
 
 strong {
   font-weight: 400;
 }
 
-h1, h2, h5 {
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: 2px;
-}
-
-h1 {
-  text-align: center;
-  display: block;
-}
-
 .createdBy {
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Lato', sans-serif;
   font-size: 20px;
 }
 
@@ -425,12 +564,9 @@ h1 {
   background-color: #fff9f9;
 }
 
-
-.title {
-  font-family: 'Indie Flower', cursive;
-  font-weight: 700;
-  line-height: 1.2;
-  color: black;
+.newTrip {
+  background-color: #fff9f9;
+  height: 100vh;
 }
 
 .legContent {
@@ -440,6 +576,20 @@ h1 {
 img {
   width: 600px;
   height: 400px;
+}
+
+.userImages {
+  width: 220px;
+  height: 220px;
+  margin-bottom: 8%;
+}
+
+.userDates {
+  font-size: 14px;
+  margin-top: -1%;
+}
+.usersTripsCentered {
+  text-align: center;
 }
 
 .file {
@@ -466,7 +616,6 @@ img {
 .bold {
   font-weight: bold;
   font-size: 30px;
-  text-decoration: underline;
 }
 
 .image {
@@ -477,13 +626,14 @@ img {
 
 .editTrip {
   float: right;
-  margin-top: -9%;
-  width: 8.5%;
+  margin-top: -8%;
+  width: 8%;
 }
 
 .delTrip {
   float: right;
-  margin-top: -5%;
+  margin-top: -4%;
+  width: 8%;
 }
 
 .dateShow {
@@ -501,6 +651,7 @@ img {
 .addLeg {
   letter-spacing: 2px;
   list-style-type: none;
+  color: #00334F;
 }
 
 .descriptionShow {
@@ -522,10 +673,11 @@ li {
   // height: 210px;
   ul {
     li {
+      text-align: center;
       padding-left: 15px;
       position: relative;
       &:before {
-        content: "";
+        // content: "";
         position: absolute;
         top: 60%;
         left: 0;
