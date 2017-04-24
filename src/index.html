@@ -7,9 +7,12 @@
     <title>Angular Stack Setup</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <script src="https://use.fontawesome.com/b3d206d422.js"></script>
-    <script src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBS-euBFLe7zVu1TkuC0OsvM982OCzDYwI&callback=googleMap"></script>
+    <!-- <script src="https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBS-euBFLe7zVu1TkuC0OsvM982OCzDYwI&callback=googleMap"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWiBf3aYX4Q9m45JmMnYPVaR1uf35qIaQ&libraries=places,geometry"></script>
     <!-- inject:js -->
     <!-- endinject -->
@@ -22,7 +25,7 @@
         <ul>
           <li><a ui-sref="home">Home</a></li>
 
-          <li ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">Login</a></li>
+          <li class="loginLi" ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">Login</a></li>
           <li ng-if="!main.isAuthenticated()"><a ui-sref="register" ui-sref-active="active">Register</a></li>
           <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#">Logout</a></li>
           <li ng-if="main.isAuthenticated()"><a ui-sref="tripsNew" ui-sref-active="active">New Trip</a></li>

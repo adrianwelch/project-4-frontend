@@ -96,11 +96,11 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
   }
 
   vm.delete = tripsDelete;
-  //
-  // function tripsUpdate() {
-  //   Trip
-  //     .update({id: vm.trip.id, trip: vm.trip });
-  // }
+  
+  function tripsUpdate() {
+    Trip
+      .update({id: vm.trip.id, trip: vm.trip });
+  }
 
   function addComment() {
     vm.comment.trip_id = vm.trip.id;

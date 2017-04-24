@@ -1,118 +1,132 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="trip">
-        <h1 class="title">
-          {{ tripsShow.trip.title }}<p>Created by: <strong>{{tripsShow.trip.user.username}}</strong></p>
-        <h1>
-        <google-map class="map" legs="tripsShow.trip.legs" selected="tripsShow.selected" ng-if="tripsShow.trip.$resolved"></google-map>
-        <button ui-sref="tripsEdit({id: tripsShow.trip.id})" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Edit</button>
-        <button ng-click="tripsShow.delete()" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Delete</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="content">
-    <div class="flights">
-      <li ng-repeat="flight in tripsShow.flights|limitTo:1">
-        <h2>Flights to </strong> {{flight.DestinationCity}}, {{flight.DestinationCountry}} for Next Week <br> <strong></h2>
-      </li>
-      <ul>
-        <li ng-repeat="flight in tripsShow.flights">
-          <div class="row">
-            <div class="col-md-12">
-              <p><strong>Airline: </strong>{{ flight.CarrierName}} <br> <strong>Fare: </strong> £{{flight.MinPrice}}
-              </p>
-            </div>
+<div class="tripShow">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 topContent">
+        <div class="trip">
+          <h1 class="title">
+            {{ tripsShow.trip.title }}<p class="createdBy"><strong>Created by: {{tripsShow.trip.user.username}}</strong>
+          </h1>
+          <div class="tripBtns">
+            <button class="btn btn-primary editTrip" ui-sref="tripsEdit({id: tripsShow.trip.id})" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Edit Trip</button>
+            <button class="btn btn-danger delTrip" ng-click="tripsShow.delete()" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Delete Trip</button>
           </div>
-        </li>
-      </ul>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="joiners">
-          <h5>Trip Joined by</h5>
-          <ul>
-            <li ng-repeat="joiner in tripsShow.trip.joiners">{{ joiner.username }}</li>
-          </ul>
+          <google-map class="map" legs="tripsShow.trip.legs" selected="tripsShow.selected" ng-if="tripsShow.trip.$resolved"></google-map>
         </div>
       </div>
-      <div class="col-md-6">
-        <button ng-click="tripsShow.toggleAttending()" ng-if="!tripsShow.isAttending()&& main.isAuthenticated()">Join Trip</button>
-        <button ng-click="tripsShow.toggleAttending()" ng-if="tripsShow.isAttending() && main.isAuthenticated()">Reject</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Add a Leg</h2>
-      </div>
-    </div>
-    <div class="row">
-      <form ng-submit="tripsShow.create()">
-        <div class="col-md-3">
-          <label for="date">Date</label>
-          <input type="date" id="date" name="date" ng-model="tripsShow.leg.date">
-        </div>
-        <div class="col-md-3 locationShow">
-          <label for="location">Location</label>
-          <input type="text" autocomplete id="location" name="location" ng-model="tripsShow.location" get-lat-lng="citiesIndex.getLatLng(lat,lng)" lat="tripsShow.stop.lat" lng="tripsShow.stop.lng" place="tripsShow.stop.name">
-        </div>
-        <div class="col-md-3 descriptionShow">
-          <label for="description">Description</label>
-          <textarea name="description" id="description" name="description" ng-model="tripsShow.leg.description"></textarea>
-        </div>
-        <div class="col-md-3">
-          <label for="base64">Image</label>
-          <div class="file">
-            <input type="file" base64 id="base64" name="base64" ng-model="tripsShow.leg.base64">
-          </div>
-        </div>
-      <div class="col-md-12">
-        <button class="btn primary">Create</button>
-      </div>
-      </form>
     </div>
 
-    <div class="row legContent">
-      <div ng-repeat="leg in tripsShow.trip.legs" class="col-md-4 dates-content">
-        <div class="col-md-4 dateShow">
-          <h3>
-            Date: <br>{{leg.date}}
-          </h3>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="flights">
+            <li ng-repeat="flight in tripsShow.flights|limitTo:1">
+              <h2 class="flightsTo">Flights to </strong> {{flight.DestinationCity}}, {{flight.DestinationCountry}} for Next Week <br> <strong></h2>
+            </li>
+            <ul>
+              <li ng-repeat="flight in tripsShow.flights">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="availFlights"><span>Airline</span> <h4 class="info"> {{ flight.CarrierName}}
+                    </p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="availFlights"><span>Fares</span> <h4 class="info">£{{flight.MinPrice}}</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-4">
-          <h3 class= "legLocation">
-           Location:<br> {{ leg.location }}
-          </h3>
+        <div class="col-md-6">
+          <div class="joinees">
+            <h5 class="tripJoined">Trip Joined by</h5>
+            <ul>
+              <li class="joinerUsers" ng-repeat="joiner in tripsShow.trip.joiners">{{ joiner.username }}</li>
+            </ul>
+            <button class="btn btn-primary join" ng-click="tripsShow.toggleAttending()" ng-if="!tripsShow.isAttending()&& main.isAuthenticated()">Join Trip</button>
+            <button class="btn btn-danger cancel" ng-click="tripsShow.toggleAttending()" ng-if="tripsShow.isAttending() && main.isAuthenticated()">Cancel Trip</button>
+          </div>
         </div>
-        <div class="col-md-4">
-            <img ng-src="{{ leg.image_src }}">
-        </div>
+      </div>
+      <div class="legForm">
         <div class="row">
           <div class="col-md-12">
-            <h3 class="legDescription">
-              Description: <br>{{leg.description}}
-            </h3>
-            <button ui-sref="legsEdit({id: leg.id})" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Edit</button>
-            <button ng-click="tripsShow.deleteLeg(leg)" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Delete</button>
+            <h2 class="addLeg">Add a Leg</h2>
+          </div>
+        </div>
+        <div class="row">
+          <form ng-submit="tripsShow.create()">
+            <div class="col-md-3 dateShow">
+              <label class="legFormLabel" for="date">Date</label>
+              <input type="date" id="date" name="date" ng-model="tripsShow.leg.date">
+            </div>
+            <div class="col-md-3 locationShow">
+              <label class="legFormLabel" for="location">Location</label>
+              <input type="text" autocomplete id="location" name="location" ng-model="tripsShow.location" get-lat-lng="citiesIndex.getLatLng(lat,lng)" lat="tripsShow.stop.lat" lng="tripsShow.stop.lng" place="tripsShow.stop.name">
+            </div>
+            <div class="col-md-3 descriptionShow">
+              <label class="legFormLabel" for="description">Description</label>
+              <textarea name="description" rows="4" cols="32" id="description" name="description" ng-model="tripsShow.leg.description"></textarea>
+            </div>
+            <div class="col-md-3 imageShow">
+              <label class="legFormLabel" for="base64">Image</label>
+              <div class="file">
+                <input type="file" base64 id="base64" name="base64" ng-model="tripsShow.leg.base64">
+              </div>
+            </div>
+          <div class="col-md-12">
+            <button class="btn btn-primary create" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Create</button>
+          </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="legContent">
+        <div ng-repeat="leg in tripsShow.trip.legs" class="dates-content row">
+          <div class="col-md-6 dateShow">
+            <div class="row">
+              <div class="col-md-6">
+                <h3 class="flightsTo">
+                  <span class="bold">Date: </span><br>{{leg.date|date:'dd/MM/yyyy'}}
+                </h3>
+              </div>
+              <div class="col-md-6">
+                <h3 class= "flightsTo">
+                 <span class="bold">Location:</span><br> {{ leg.location }}
+                </h3>
+              </div>
+              <div class="col-md-12">
+                <h3 class="flightsTo legDescription">
+                  <span class="bold">Description: </span><br><br>{{leg.description}}
+                </h3>
+                <div class="legBtns">
+                  <button class="btn btn-primary" ui-sref="legsEdit({id: leg.id})" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Edit</button>
+                  <button class="btn btn-danger" ng-click="tripsShow.deleteLeg(leg)" ng-if="main.isAuthenticated() && main.currentUser.id === tripsShow.trip.user.id">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <img class="image img-rounded" ng-src="{{ leg.image_src }}">
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Comments</h2>
-        <ul>
-          <li ng-repeat="comment in tripsShow.trip.comments">{{ comment.body }} - <strong>{{ comment.user.username }}</strong><button ng-click="tripsShow.deleteComment(comment)" ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
-        </ul>
-      </div>
-      <div class="col-md-6" ng-if="main.isAuthenticated()">
-        <h2>Add Comment</h2>
-        <form ng-submit="tripsShow.addComment()">
-          <textarea type="text" name="body" ng-model="tripsShow.comment.body"></textarea>
-          <button>Create</button>
-        </form>
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="commentsTitle">Comments</h2>
+          <ul>
+            <li ng-repeat="comment in tripsShow.trip.comments"><span class="body">{{ comment.body }}</span> -       <span class="userComment">{{ comment.user.username }}</span><button class="btn btn-danger delCom" ng-click="tripsShow.deleteComment(comment)" "ng-if="main.isAuthenticated() && main.currentUser.id === comment.user.id">Delete</button></li>
+          </ul>
+        </div>
+        <div class="col-md-6" ng-if="main.isAuthenticated()">
+          <h2 class="addComment">Add Comment</h2>
+          <form ng-submit="tripsShow.addComment()">
+            <textarea type="text" rows="4" cols="32" name="body" ng-model="tripsShow.comment.body"></textarea>
+            <button class="btn btn-primary createComm">Create</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

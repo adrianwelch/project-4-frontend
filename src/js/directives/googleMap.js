@@ -88,7 +88,7 @@ function googleMap($window) {
           position: latLng,
           map,
           animation: google.maps.Animation.DROP,
-          label: labels[labelIndex++ % labels.length],
+          // label: labels[labelIndex++ % labels.length],
           icon
         });
         markers.push(marker);

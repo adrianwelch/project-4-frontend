@@ -1,10 +1,11 @@
-<div class="container">
-  <ul class="row">
-    <li ng-repeat="trip in tripsIndex.all" class="col-md-6">
+<div class="container index">
+  <div class="left"></div>
+  <ul class="row right">
+    <li ng-repeat="trip in tripsIndex.all" class="col-md-12">
       <div class="trip">
         <h2>{{ trip.title }}<h2>
         <p class= "createdBy">Created by: <strong>{{ trip.user.username }}</strong></p>
-        <button ui-sref="tripsShow({id: trip.id})">View</button>
+        <button class="btn btn-primary" ui-sref="tripsShow({id: trip.id})">View</button>
       </div>
     </li>
   </ul>
