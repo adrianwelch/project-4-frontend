@@ -47,7 +47,6 @@ $main-color: #FF999C;
     border: none;
     padding: 5px 20px;
     margin-top: 10%;
-    margin-left: 30%;
     font-size: 25px;
     font-weight: bold;
     letter-spacing: -1px;
@@ -70,7 +69,6 @@ $main-color: #FF999C;
     }
 }
 .logBtns {
-  margin-left: 30px;
     .loginbutton {
       @extend .generalbutton;
       }
