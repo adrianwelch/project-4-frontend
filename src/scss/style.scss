@@ -38,6 +38,13 @@ body {
  }
 }
 
+#hometitle{
+  font-weight: 100;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 60px;
+  font-size: 130px;
+}
+
 h2 {
   font-family: 'Palanquin Dark', sans-serif;
 }
@@ -252,7 +259,7 @@ nav {
   font-family: 'Lato', sans-serif;
   color: #00334F;
   letter-spacing: 3px;
-  margin-top: -5%;
+  margin-top: 3%;
 }
 
 .usersTrips {
@@ -267,6 +274,7 @@ header {
 
 .userRight {
   background-color: #fff9f9;
+  margin-top: 6%;
 }
 .topContent {
   margin-bottom: -9%;
@@ -501,8 +509,15 @@ span {
 .newTripTitle {
   letter-spacing: 2px;
   font-family: 'Lato', sans-serif;
-
+  margin-left: 15%;
+  margin-top: 17%;
+  margin-right: 3%;
 }
+
+.tripShowTitle {
+  margin-top: 8%;
+}
+
 
 .tripTitle {
   font-family: 'Lato', sans-serif;

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-12 topContent">
         <div class="trip">
-          <h1 class="title">
+          <h1 class="title tripShowTitle">
             {{ tripsShow.trip.title }}<p class="createdBy"><strong>Created by: {{tripsShow.trip.user.username}}</strong>
           </h1>
           <div class="tripBtns">
@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="row">
-          <form ng-submit="tripsShow.create()">
+          <form ng-submit="tripsShow.create() ">
             <div class="col-md-3 dateShow">
               <label class="legFormLabel" for="date">Date</label>
               <input type="date" id="date" name="date" ng-model="tripsShow.leg.date">
