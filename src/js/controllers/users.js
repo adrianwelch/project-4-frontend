@@ -43,7 +43,6 @@ function UsersShowCtrl(User, $stateParams, $state, $auth) {
   }
 
   vm.create = create;
-
 }
 
 UsersEditCtrl.$inject = ['User', '$stateParams', '$state'];

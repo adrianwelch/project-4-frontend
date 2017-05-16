@@ -59,9 +59,6 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
     vm.leg.lat = vm.stop.lat;
     vm.leg.lng = vm.stop.lng;
 
-    // console.log('location', vm.stop.name);
-    // console.log('lat', vm.stop.lat);
-    // console.log('lng', vm.stop.lng);
     console.log(vm.leg.location);
 
 
@@ -96,7 +93,7 @@ function TripsShowCtrl(Trip, User, Comment, $stateParams, $state, $auth, Leg, $s
   }
 
   vm.delete = tripsDelete;
-  
+
   function tripsUpdate() {
     Trip
       .update({id: vm.trip.id, trip: vm.trip });

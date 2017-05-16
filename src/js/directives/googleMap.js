@@ -92,7 +92,6 @@ function googleMap($window) {
           icon
         });
         markers.push(marker);
-        // console.log('marker', marker);
 
         const htmlElement = `<div id="infoWindow">
                               <h3>${leg.location}</h3>

@@ -15,7 +15,6 @@ function Flights($http, API_URL) {
         // console.log(vm.carriers);
         vm.flights = response.data;
         console.log('service', vm.flights);
-        // vm.response.data = flights;
         response.data.Quotes.forEach((quote) => {
           const destination = response.data.Places.find((place) => {
             return place.PlaceId === quote.OutboundLeg.DestinationId;
